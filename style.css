@@ -1304,6 +1304,119 @@ section {
     box-shadow: 0 5px 15px rgba(255, 92, 0, 0.25);
 }
 
+/* Digital Footprint Section */
+.footprint-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.footprint-card {
+    padding: 45px 35px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.footprint-card:hover {
+    transform: translateY(-8px);
+}
+
+.footprint-icon {
+    font-size: 3.6rem;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footprint-card:hover .footprint-icon {
+    transform: scale(1.1);
+}
+
+.github-icon {
+    color: #FFFFFF;
+}
+
+.linkedin-icon {
+    color: #0A66C2;
+}
+
+.footprint-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.footprint-card p {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: 1.65;
+    margin-bottom: 26px;
+    flex-grow: 1;
+    max-width: 340px;
+}
+
+.footprint-action {
+    font-family: var(--font-heading);
+    font-size: 0.92rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.25s ease, color 0.25s ease;
+}
+
+.footprint-action i {
+    transition: transform 0.25s ease;
+}
+
+.github-footprint .footprint-action {
+    color: #C084FC;
+}
+
+.github-footprint:hover {
+    border-color: rgba(192, 132, 252, 0.5) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(192, 132, 252, 0.2) !important;
+}
+
+.github-footprint:hover .corner-plus {
+    color: #C084FC;
+}
+
+.linkedin-footprint .footprint-action {
+    color: #38BDF8;
+}
+
+.linkedin-footprint:hover {
+    border-color: rgba(56, 189, 248, 0.5) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.2) !important;
+}
+
+.linkedin-footprint:hover .corner-plus {
+    color: #38BDF8;
+}
+
+.footprint-card:hover .footprint-action {
+    gap: 12px;
+}
+
+.footprint-card:hover .footprint-action i {
+    transform: translateX(4px);
+}
+
 /* Contact Section */
 .contact-container {
     width: 100%;
@@ -1658,9 +1771,19 @@ footer {
     }
 
     .project-grid,
-    .skills-grid {
+    .skills-grid,
+    .footprint-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+
+    .footprint-grid {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .footprint-card {
+        padding: 32px 22px;
     }
 
     .project-card,
@@ -1830,8 +1953,14 @@ footer {
     .education-card,
     .project-card,
     .skill-category,
+    .footprint-card,
     .contact-container {
         padding: 20px 14px;
+    }
+
+    .footprint-icon {
+        font-size: 3rem;
+        margin-bottom: 14px;
     }
 
     .toast-notification {
