@@ -157,14 +157,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Send Message';
             const nameInput = document.getElementById('name');
             const userName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'there';
 
-            showToast(`Thank you, ${userName}! Your message has been sent successfully.`);
-            contactForm.reset();
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+            }
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showToast(`Thank you, ${userName}! Your message has been sent successfully.`);
+                    contactForm.reset();
+                } else {
+                    const data = await response.json().catch(() => null);
+                    if (data && data.errors) {
+                        const errMsg = data.errors.map(err => err.message).join(', ');
+                        showToast(`Error: ${errMsg}`);
+                    } else {
+                        showToast('Oops! There was a problem sending your message.');
+                    }
+                }
+            } catch (err) {
+                showToast('Network error! Please check your connection and try again.');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
+            }
         });
     }
 
