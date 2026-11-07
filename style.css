@@ -1376,6 +1376,7 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    color: var(--color-orange);
     transition: gap 0.25s ease, color 0.25s ease;
 }
 
@@ -1383,30 +1384,13 @@ section {
     transition: transform 0.25s ease;
 }
 
-.github-footprint .footprint-action {
-    color: #C084FC;
+.footprint-card:hover {
+    border-color: rgba(255, 92, 0, 0.6) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 92, 0, 0.2) !important;
 }
 
-.github-footprint:hover {
-    border-color: rgba(192, 132, 252, 0.5) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(192, 132, 252, 0.2) !important;
-}
-
-.github-footprint:hover .corner-plus {
-    color: #C084FC;
-}
-
-.linkedin-footprint .footprint-action {
-    color: #38BDF8;
-}
-
-.linkedin-footprint:hover {
-    border-color: rgba(56, 189, 248, 0.5) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.2) !important;
-}
-
-.linkedin-footprint:hover .corner-plus {
-    color: #38BDF8;
+.footprint-card:hover .corner-plus {
+    color: var(--color-orange) !important;
 }
 
 .footprint-card:hover .footprint-action {
