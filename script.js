@@ -19,10 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.setAttribute('aria-expanded', !isExpanded);
             navLinks.classList.toggle('nav-active');
 
+            const isNowActive = navLinks.classList.contains('nav-active');
+            document.body.style.overflow = isNowActive ? 'hidden' : '';
+
             // Toggle hamburger icon between bars and xmark
             const icon = hamburger.querySelector('i');
             if (icon) {
-                if (navLinks.classList.contains('nav-active')) {
+                if (isNowActive) {
                     icon.classList.remove('fa-bars');
                     icon.classList.add('fa-xmark');
                 } else {
@@ -37,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('nav-active');
                 hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
                 const icon = hamburger.querySelector('i');
                 if (icon) {
                     icon.classList.remove('fa-xmark');
@@ -293,9 +297,10 @@ document.addEventListener('DOMContentLoaded', () => {
             offscreen.width = asciiCanvas.width;
             offscreen.height = asciiCanvas.height;
 
-            // Adjust font size based on screen width for responsiveness
+            // Adjust font size based on screen width for responsiveness without clipping
             const isMobile = window.innerWidth < 768;
-            const fontSize = isMobile ? 55 : (window.innerWidth < 1024 ? 90 : 130);
+            const isSmallMobile = window.innerWidth < 420;
+            const fontSize = isSmallMobile ? 40 : (isMobile ? 50 : (window.innerWidth < 1024 ? 90 : 130));
 
             // Draw the text internally using your WSO2 Space Mono font
             offCtx.font = `bold ${fontSize}px "Space Mono", monospace`;
@@ -315,7 +320,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const imgData = offCtx.getImageData(0, 0, offscreen.width, offscreen.height).data;
             particles = [];
 
-            const gridSize = 6; // Spacing between ASCII characters
+            // Spacing between ASCII characters (larger on mobile for 60fps GPU performance)
+            const gridSize = isMobile ? 8 : 6;
             const chars = ['0', '1', '{', '}', '<', '>'];
 
             for (let y = 0; y < offscreen.height; y += gridSize) {
