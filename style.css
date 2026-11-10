@@ -985,9 +985,19 @@ header.scrolled {
     box-shadow: 0 0 6px #005CE7;
 }
 
+.status-dot-sm.terracotta {
+    background-color: #D55E34;
+    box-shadow: 0 0 6px #D55E34;
+}
+
 .tag-cyan {
     color: var(--color-orange);
     border-color: rgba(255, 92, 0, 0.4);
+}
+
+.tag-terracotta {
+    color: #D55E34;
+    border-color: rgba(213, 94, 52, 0.4);
 }
 
 .tag-blue {
