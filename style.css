@@ -980,9 +980,19 @@ header.scrolled {
     color: #6366F1;
 }
 
+.status-dot-sm.blue {
+    background-color: #005CE7;
+    box-shadow: 0 0 6px #005CE7;
+}
+
 .tag-cyan {
     color: var(--color-orange);
     border-color: rgba(255, 92, 0, 0.4);
+}
+
+.tag-blue {
+    color: #60A5FA;
+    border-color: rgba(0, 92, 231, 0.4);
 }
 
 .tag-rose {
