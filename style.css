@@ -545,6 +545,26 @@ header.scrolled {
     transform: translateY(-3px);
 }
 
+/* WSO2 Neon Orange Accent CV Button */
+.cv-btn {
+    background: rgba(255, 92, 0, 0.08);
+    border: 1px dashed rgba(255, 92, 0, 0.5);
+    color: var(--color-orange);
+}
+
+.cv-btn:hover {
+    background: rgba(255, 92, 0, 0.18);
+    border-color: rgba(255, 92, 0, 0.85);
+    color: var(--color-orange);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(255, 92, 0, 0.25);
+}
+
+.about-action {
+    margin-top: 24px;
+    width: 100%;
+}
+
 .hero-socials {
     display: flex;
     gap: 14px;
